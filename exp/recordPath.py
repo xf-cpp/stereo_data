@@ -34,22 +34,18 @@ def initAirsim():
     return client
 
 
-def autoAction(client):
-    # 创建深度图像捕获设置
-    # depth_cam = airsim.ImageCaptureBase()
-    # depth_cam.set_image_type(airsim.ImageType.DepthVis)
-    # depth_cam.set_resolution(640, 480)  # 设置分辨率，根据需要调整
-
+def autoAction(client,x,y,z):
     """
     设置初始相对位置 录制双目相机数据  地图坐标轴西向为Y正，南向为X正，地面向下为Z正，坐标单位为m
+    初始位置，x,y,z
     第一个初始位置为底部的后置相机 坐标 -600，-50，-80
     第二个初始位置为底部的前置相机 坐标-600，-50.25，-80
 
     """
     # 设置到指定位置
-    x_pos = -600
-    y_pos = -50
-    z_pos = -80
+    x_pos = x
+    y_pos = y
+    z_pos = z
     pose = airsim.Pose(airsim.Vector3r(x_pos, y_pos, z_pos), airsim.to_quaternion(0, 0, 0))
     client.simSetVehiclePose(pose, True)
     # 悬浮
@@ -73,12 +69,14 @@ def autoAction(client):
     # 悬浮
     client.moveByVelocityBodyFrameAsync(0, 0, 0, 1).join()
     client.hoverAsync().join()
-
     # # 停止录制数据
-    # client.stopRecording()
+    client.stopRecording()
+
 
 
 if __name__ == "__main__":
     client = initAirsim()
-
-    autoAction(client)
+    # 第一个初始位置为底部的后置相机 坐标 -600，-50，-80
+    autoAction(client, -600,-50,-80 )
+    # 第二个初始位置为底部的前置相机 坐标-600，-50.25，-80
+    autoAction(client,-600,-50.25,-80)
