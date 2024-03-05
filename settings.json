@@ -1,8 +1,9 @@
-{"SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+{
+  "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
   "SettingsVersion": 1.2,
   "SimMode": "Multirotor",
   "ViewMode": "FlyWithMe",
-    "SpeedUnitFactor": 1.0,
+  "SpeedUnitFactor": 1.0,
   "SpeedUnitLabel": "m/s",
   "Recording": {
     "RecordInterval": 0.05,
@@ -24,9 +25,9 @@
         "MotionBlurAmount": 0,
         "TargetGamma": 1.0,
         "ProjectionMode": "",
-        "OrthoWidth": 5.12,
-        "Position": [0.0,0.0,0.0]
+        "OrthoWidth": 5.12
       }
+
     ]
   }
 }
