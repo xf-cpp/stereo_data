@@ -1,0 +1,32 @@
+{"SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ViewMode": "FlyWithMe",
+    "SpeedUnitFactor": 1.0,
+  "SpeedUnitLabel": "m/s",
+  "Recording": {
+    "RecordInterval": 0.05,
+    "Cameras": [
+        { "CameraName": "bottom_center", "ImageType": 0, "PixelsAsFloat": false, "Compress": true }
+    ]
+  },
+  "CameraDefaults": {
+    "CaptureSettings": [
+      {
+        "ImageType": 0,
+        "Width": 1920,
+        "Height": 1080,
+        "FOV_Degrees": 90,
+        "AutoExposureSpeed": 100,
+        "AutoExposureBias": 0,
+        "AutoExposureMaxBrightness": 0.64,
+        "AutoExposureMinBrightness": 0.03,
+        "MotionBlurAmount": 0,
+        "TargetGamma": 1.0,
+        "ProjectionMode": "",
+        "OrthoWidth": 5.12,
+        "Position": [0.0,0.0,0.0]
+      }
+    ]
+  }
+}
