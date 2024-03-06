@@ -43,8 +43,8 @@ def autoAction(client,x,y,z):
 
     """
     # 设置到指定位置
-    x_pos = x
-    y_pos = y
+    x_pos = 123
+    y_pos = 132
     z_pos = z
     pose = airsim.Pose(airsim.Vector3r(x_pos, y_pos, z_pos), airsim.to_quaternion(0, 0, 0))
     client.simSetVehiclePose(pose, True)
