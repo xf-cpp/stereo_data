@@ -7,27 +7,20 @@
   "SpeedUnitLabel": "m/s",
   "Recording": {
     "RecordInterval": 0.05,
-    "Cameras": [
-        { "CameraName": "bottom_center", "ImageType": 0, "PixelsAsFloat": false, "Compress": true }
-    ]
-  },
-  "CameraDefaults": {
-    "CaptureSettings": [
-      {
-        "ImageType": 0,
-        "Width": 1920,
-        "Height": 1080,
-        "FOV_Degrees": 90,
-        "AutoExposureSpeed": 100,
-        "AutoExposureBias": 0,
-        "AutoExposureMaxBrightness": 0.64,
-        "AutoExposureMinBrightness": 0.03,
-        "MotionBlurAmount": 0,
-        "TargetGamma": 1.0,
-        "ProjectionMode": "",
-        "OrthoWidth": 5.12
+    "Cameras": {
+      "bottom_center_custom": {
+        "CaptureSettings": [
+          {
+            "PublishToRos": 1,
+            "ImageType": 0,
+            "Width": 800,
+            "Height": 600,
+            "FOV_Degrees": 90
+          }
+        ],
+        "X": 0.0, "Y": 50.0, "Z": 0.0,
+        "Pitch": 0, "Roll": 0, "Yaw": 0
       }
-
-    ]
+    }
   }
 }
