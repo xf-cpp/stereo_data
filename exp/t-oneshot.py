@@ -34,7 +34,7 @@ def autoAction(client):
 # depth_cam.set_image_type(airsim.ImageType.DepthVis)
 # depth_cam.set_resolution(640, 480)  # 设置分辨率，根据需要调整
     camera_name1 = "bottom_center1"
-    camera_name2 = "bottom_center2"
+
 
     #设置到指定位置
     x_pos = -600
@@ -49,7 +49,6 @@ def autoAction(client):
     current_position = client.simGetCameraInfo(camera_name1).pose.position
     new_position = airsim.Vector3r(current_position.x_val  +0.5, current_position.y_val, current_position.z_val)
     client.simSetCameraPose(camera_name1, airsim.Pose(new_position, airsim.Quaternionr()))
-
 
     fov = client.simGetCameraInfo(camera_name1, external=False).fov
     pose = client.simGetCameraInfo(camera_name1, external=False).pose
