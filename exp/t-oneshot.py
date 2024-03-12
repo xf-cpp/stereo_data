@@ -33,7 +33,7 @@ def autoAction(client):
 # depth_cam = airsim.ImageCaptureBase()
 # depth_cam.set_image_type(airsim.ImageType.DepthVis)
 # depth_cam.set_resolution(640, 480)  # 设置分辨率，根据需要调整
-    camera_name1 = "bottom_center1"
+    camera_name1 = "front_center"
 
 
     #设置到指定位置
@@ -42,11 +42,16 @@ def autoAction(client):
     z_pos = -80
     pose = airsim.Pose(airsim.Vector3r(x_pos,y_pos,z_pos),airsim.to_quaternion(0,0,0))
     client.simSetVehiclePose(pose, True)
+    #读取当前相机位姿
     fov = client.simGetCameraInfo(camera_name1,external=False).fov
     pose = client.simGetCameraInfo(camera_name1,external=False).pose
+    #打印当前相机位姿
     print(f"camera's fov:{fov}")
     print(f"camera's pose:{pose}")
+    #从当前位置设置偏移
     current_position = client.simGetCameraInfo(camera_name1).pose.position
+    current_quaternion = airsim.to_quaternion()
+
     new_position = airsim.Vector3r(current_position.x_val  +0.5, current_position.y_val, current_position.z_val)
     client.simSetCameraPose(camera_name1, airsim.Pose(new_position, airsim.Quaternionr()))
 

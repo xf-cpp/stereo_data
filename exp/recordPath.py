@@ -42,21 +42,24 @@ def autoAction(client,x,y,z):
     第二个初始位置为底部的前置相机 坐标-600，-50.25，-80
 
     """
+    cameral_name = "front_left"
+    camerar_name = "front_right"
     # 设置到指定位置
-    x_pos = 123
-    y_pos = 132
+    x_pos = x
+    y_pos = y
     z_pos = z
     pose = airsim.Pose(airsim.Vector3r(x_pos, y_pos, z_pos), airsim.to_quaternion(0, 0, 0))
     client.simSetVehiclePose(pose, True)
     # 悬浮
     client.moveByVelocityBodyFrameAsync(0, 0, 0, 1).join()
     client.hoverAsync().join()
+
+    camera_lpose = airsim.Pose(airsim.Vector3r(x_val=0.5,y_val=0,z_val=0),airsim.to_quaternion(80.5,0,0))
+    camera_rpose = airsim.Pose(airsim.Vector3r(-0.5,0,0),airsim.to_quaternion(80.5,0,0))
+    client.simSetCameraPose(cameral_name, camera_lpose)
+    client.simSetCameraPose(camerar_name, camera_rpose)
     # 开始录制数据
     client.startRecording()
-    # 往前跑五秒
-    # client.moveByVelocityBodyFrameAsync(vx=10, vy=0,vz= 0, duration=5).join()
-    # 停止录制数据
-    # client.stopRecording()
 
     path = [airsim.Vector3r(x_pos,y_pos+200,z_pos),
             airsim.Vector3r(x_pos + 200, y_pos+200, z_pos),
@@ -64,8 +67,8 @@ def autoAction(client,x,y,z):
             airsim.Vector3r(x_pos, y_pos, 0)
             ]
     client.moveOnPathAsync(path,
-                           12, 120,
-                           airsim.DrivetrainType.ForwardOnly, airsim.YawMode(False, 0), 20, 1).join()
+                           velocity=12, timeout_sec=120,
+                           drivetrain=airsim.DrivetrainType.ForwardOnly,yaw_mode= airsim.YawMode(False, 0), lookahead = 20, adaptive_lookahead=1).join()
     # 悬浮
     client.moveByVelocityBodyFrameAsync(0, 0, 0, 1).join()
     client.hoverAsync().join()
